@@ -38,8 +38,13 @@ const baseUrl = "https://clarivate.com/blog/?wpv_post_search=web+of+science&wpv_
             console.log('Link:', link);
             console.log('Image:', image);
 
-            // Store the data in the database using the MySQL connection
-            // Example query: connection.query('INSERT INTO your_table (title, link, image) VALUES (?, ?, ?)', [title, link, image]);
+            //TODO Store the data in the database using the MySQL connection
+            let sql = "INSERT INTO your_table_name (title, link, image) VALUES (?, ?, ?)";
+            let values = [title, link, image];
+            connection.query(sql, values, (error, results, fields) => {
+                if (error) throw error;
+                console.log('Data successfully saved to database');
+            });
 
             totalCards++;
 
